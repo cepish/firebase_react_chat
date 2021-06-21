@@ -1,0 +1,41 @@
+@import '../../styles/index.scss';
+
+.container {
+  padding: 20px;
+  border-left: solid 1px #ccc;
+  width: 150px;
+
+  @media screen and (max-width: $mediaMobileSM) {
+    @include mobile-container;
+    transform: translate(100%, 0);
+    background: #454545;
+    color: white;
+    right: 0;
+  }
+}
+.toggleButton {
+  @include toggler-button;
+  left: -46px;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.memberStatus {
+  margin-right: 5px;
+  border-radius: 50%;
+  height: 0.66em;
+  width: 0.66em;
+
+  &.online {
+    background: hsl(110, 50%, 50%);
+  }
+
+  &.offline {
+    background: hsl(10, 0%, 70%);
+  }
+}
+

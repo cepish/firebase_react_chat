@@ -1,0 +1,45 @@
+@import '../../styles/index.scss';
+
+.nav {
+  background: #454545;
+  color: #fff;
+  width: 225px;
+  display: flex;
+  flex-direction: column;
+
+  
+  @media screen and (max-width: $mediaMobileSM) {
+    @include mobile-container;
+    transform: translate(-100%, 0);
+    left: 0;
+  }
+
+  & + * {
+    display: flex;
+    flex: 1;
+  }
+}
+
+.toggleButton {
+  @include toggler-button;
+  right: -46px;
+}
+
+.channel {
+  & + * {
+    display: flex;
+    flex: 1;
+  }
+
+  & a {
+    font-size: 90%;
+    padding: 8px 20px;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  &.active {
+    background: hsl(30, 50%, 50%);
+  }
+}

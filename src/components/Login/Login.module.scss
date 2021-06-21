@@ -1,0 +1,134 @@
+.container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #eee;
+}
+.outerHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    max-height: 640px;
+    background: #f9f9f9;
+    max-width: 375px;
+    min-width: 320px;
+    margin: 24px auto;
+    position: relative;
+    font-size: 16px;
+    font-family: "Quicksand", sans-serif;
+    padding: 10px 15px;
+
+    & input[type='submit'] {
+        width: 100%;
+        background: #ff4d4d;
+        margin-top: 15px;
+        padding: 7.5px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        color: white;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+}
+
+.logo {
+    font-size: 46px;
+    font-family: "Dancing Script",cursive,sans-serif;
+    text-align: center;
+    color: #ff4d4d;
+    margin-top: 0;
+
+    &.small {
+        text-align: left;
+        font-size: 32px;
+    }
+}
+.outerHolder {
+    
+}
+.innerHolder {
+    background: white;
+    padding: 10px 15px;
+    border: 1px solid #eee;
+    transition: .35s;
+}
+.header {
+    width: 60%;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 0;
+    color: #979797;
+    position: relative;
+        
+        &.big {
+            font-size: 22px;
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 25%;
+            position: absolute;
+            left:105%;
+            top: calc(50% - 1.5px);
+            background: #d3d3d3;
+            border-radius: 10px;
+        }
+        &:before {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 25%;
+            position: absolute;
+            right:105%;
+            top: calc(50% - 1.5px);
+            background: #d3d3d3;
+            border-radius: 10px;
+        }
+}
+.formContainer {
+    background: white;
+    padding: 10px 15px;
+    //box-shadow: $shadow;
+    transition: .35s;
+}
+.inputWrapper {
+    margin: 10px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+
+    & input {
+        display: block;
+        width: 100%;
+        margin-left: -4%;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        padding: 10px 25px;
+        background: #f9f9f9;
+        margin-top: 5px;
+        outline: none;
+        font-size: 16px;
+        font-family: gold;
+        &:focus {
+          border: 1px solid purple;
+        }
+      }
+}
+.label {
+    font-size: 14px;
+} 
+.loginError {
+    color: #ff4d4d;
+}

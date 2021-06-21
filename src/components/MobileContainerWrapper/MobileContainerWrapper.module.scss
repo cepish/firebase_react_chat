@@ -1,0 +1,6 @@
+@import '../../styles/index.scss';
+
+.visible {
+    transform: translate(0,0) !important;
+    z-index: 2;
+}

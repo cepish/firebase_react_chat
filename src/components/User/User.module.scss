@@ -1,0 +1,19 @@
+@import '../../styles/index.scss';
+
+.user {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.userImage {
+  border-radius: 50%;
+    margin-right: 10px;
+    height: 32px;
+}
+
+.button {
+  @include app-button;
+}
+

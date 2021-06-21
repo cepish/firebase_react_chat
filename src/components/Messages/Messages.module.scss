@@ -1,0 +1,26 @@
+.container {
+    flex: 1;
+    padding: 10px 20px 10px 20px;
+    line-height: 1.3;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+       
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px lightgrey;
+    }
+     
+    &::-webkit-scrollbar-thumb {
+      background-color: #aaa;
+      outline: 1px solid lightgrey;
+      border-radius: 4px;
+    }
+}
+
+.etx {
+    text-align: center;
+    color: hsl(200, 50%, 50%);
+    padding: 5px;
+}

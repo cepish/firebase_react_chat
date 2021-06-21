@@ -1,0 +1,39 @@
+@import '../../styles/index.scss';
+
+.container {
+    flex: 1;
+    display: flex;
+}
+
+.mainChannel  {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-bottom: solid 1px #ccc;
+
+    @media screen and (max-width: $mediaMobileSM) {
+        display: block;
+        padding: 10px 50px;
+    }
+}
+
+.topic {
+    font: inherit;
+    border: 1px solid transparent;
+}
+
+.field {
+    @include input-field;
+}
+
+.inputBox {
+    padding: 0px 20px 20px 20px;
+}

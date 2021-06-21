@@ -1,0 +1,8 @@
+@import '../../styles/index.scss';
+
+.inputBox {
+    padding: 0px 20px 20px 20px;
+}
+.field {
+    @include input-field;
+}
