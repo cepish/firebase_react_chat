@@ -6,9 +6,9 @@ const firebaseConfig = {
     storageBucket: "chat-app-be5ab.appspot.com",
     messagingSenderId: "244377960279",
     appId: "1:244377960279:web:eaa8d0a8c1240fa5624812"
-  };
+  }
 
-const defaultChannel = "general";
+const defaultChannel = "general"
 
 const config = {
     ...firebaseConfig,

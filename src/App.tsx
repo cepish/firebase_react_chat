@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-import 'firebase/database';
-import { Nav, Channel, Login } from './components';
-import { Router, Redirect } from '@reach/router';
-import { useAuth } from './utils/hooks';
-import config from './config';
-import css from './App.module.scss';
+import React, { useState } from 'react'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
+import 'firebase/database'
+import { Nav, Channel, Login } from './components'
+import { Router, Redirect } from '@reach/router'
+import { useAuth } from './utils/hooks'
+import config from './config'
+import css from './App.module.scss'
 
 if (!firebase.apps.length) {
-  firebase.initializeApp(config);
+  firebase.initializeApp(config)
 } else {
-  firebase.app();
+  firebase.app()
 }
 
-export const firebaseInstance = firebase;
-export const db = firebaseInstance.firestore();
+export const firebaseInstance = firebase
+export const db = firebaseInstance.firestore()
 export const rtdb = firebaseInstance.database()
 
 const App: React.FC = () => {
-  const [loginError, setLoginError] = useState<firebase.auth.Error | null>(null);
-  const user = useAuth(setLoginError);
+  const [loginError, setLoginError] = useState<firebase.auth.Error | null>(null)
+  const user = useAuth(setLoginError)
 
   const handleSignIn = async () => {
     const provider = new firebase.auth.GoogleAuthProvider()
@@ -34,7 +34,7 @@ const App: React.FC = () => {
     }
   }
 
-  const { defaultChannel } = config;
+  const { defaultChannel } = config
 
   const app = (
     <React.Fragment>
@@ -53,7 +53,7 @@ const App: React.FC = () => {
         : <Login loginError={loginError} handleSignIn={handleSignIn} />
       }
     </div>
-  );
+  )
 }
 
 export default App

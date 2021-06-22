@@ -1,7 +1,7 @@
-import React from 'react';
-import css from './SendMessageForm.module.scss';
-import { db } from '../../App';
-import { IUser } from '../../types/firebase';
+import React from 'react'
+import css from './SendMessageForm.module.scss'
+import { db } from '../../App'
+import { IUser } from '../../types/firebase'
 
 interface IProps {
     user: IUser | null,
@@ -18,6 +18,14 @@ const SendMessageForm: React.FC<IProps> = props => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>)  => {
         event.preventDefault()
 
+        if(!user) {
+            throw new Error(`
+                Message could not be sent.
+                Expected user object to be instance of IUser,
+                instead got ${user}
+            `)
+        }
+        
         const { currentTarget: target } = event
         const elements = { ...target.elements } as IMessageForm
         const { value } : { value: string } = elements['message']
@@ -25,12 +33,12 @@ const SendMessageForm: React.FC<IProps> = props => {
         db
             .collection(`channels/${channelId}/messages`)
             .add({
-                user: db.collection('users').doc(user!.uid),
-                userId: user!.uid,
+                user: db.collection('users').doc(user.uid),
+                userId: user.uid,
                 text: value,
                 createdAt: date,
                 createdAtStr: date.toString(),
-            });
+            })
             
         target.reset()
     }
@@ -47,7 +55,7 @@ const SendMessageForm: React.FC<IProps> = props => {
             />
           </div>
       </form>
-    );
+    )
   }
   
-  export default SendMessageForm;
+  export default SendMessageForm

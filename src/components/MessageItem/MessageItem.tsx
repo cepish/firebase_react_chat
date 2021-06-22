@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import css from './MessageItem.module.scss';
-import classNames from 'classnames';
-import { IChannelMessage, IUser, IDoc } from '../../types/firebase';
+import React, { useState, useEffect } from 'react'
+import css from './MessageItem.module.scss'
+import classNames from 'classnames'
+import { IChannelMessage, IUser, IDoc } from '../../types/firebase'
 
 interface IProp {
     message: IChannelMessage,
@@ -10,12 +10,12 @@ interface IProp {
 }
 
 const MessageItem: React.FC<IProp> = props => {
-    const { message, showAvatar, showDay } = props;
+    const { message, showAvatar, showDay } = props
     const [author, setAuthor] = useState<IUser | null>(null)
     const [error, setError] = useState<boolean | null>(null)
 
     useEffect(() => {
-        const request = message.user.get();
+        const request = message.user.get()
 
         return request.then((doc: IDoc['data']) => {
             if (doc.exists) {
@@ -30,14 +30,14 @@ const MessageItem: React.FC<IProp> = props => {
     const getMessageTime = (date: string): string => new Date(date)
         .toTimeString()
         .split(' ')[0]
-        .replace(/:\d\d$/, '');
+        .replace(/:\d\d$/, '')
 
     const getMessagesDate = (date: string): string => new Date(date)
         .toLocaleDateString('ua-UA', { 
             year: '2-digit', 
             month: 'short', 
             day: 'numeric'
-        });
+        })
 
     const messageWithAvatar = author ? (
         <div className={classNames(css.message, css.withAvatar)}>
@@ -58,19 +58,19 @@ const MessageItem: React.FC<IProp> = props => {
                 </div>
             </div>
         </div>
-    ) : null;
+    ) : null
 
     const messageWithNoAvatar = (
         <div className={classNames(css.message, css.noAvatar)}>
             <div>{message.text}</div>
         </div>
-    );
+    )
     
     const errorMessage = (
         <div className={classNames(css.message, css.error)}>
             <div><i>Unable to fetch user data.</i></div>
         </div>
-    );
+    )
 
     const dateItem = showDay ? (
         <div className={css.day}>
@@ -80,7 +80,7 @@ const MessageItem: React.FC<IProp> = props => {
           </div>
           <div className={css.dayLine} />
         </div>
-    ) : null;
+    ) : null
 
     if(error) {
         return <p>{errorMessage}</p>
@@ -98,4 +98,4 @@ const MessageItem: React.FC<IProp> = props => {
     )
 }
 
-export default MessageItem;
+export default MessageItem

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import css from './MobileContainerWrapper.module.scss';
-import classNames from 'classnames';
+import React, { useState } from 'react'
+import css from './MobileContainerWrapper.module.scss'
+import classNames from 'classnames'
 
 interface IProps {
     containerClassName: string,
@@ -8,20 +8,20 @@ interface IProps {
     icon: JSX.Element,
 }
 
-const MobileContainerWrapper: React.FC<IProps> = (props: any) => {
+const MobileContainerWrapper: React.FC<IProps> = props => {
     const { 
         children, 
         icon, 
         containerClassName, 
         buttonClassName 
-    } = props;
+    } = props
 
-    const [containerVisible, setContainerVisibility] = useState<boolean>(false);
+    const [containerVisible, setContainerVisibility] = useState<boolean>(false)
   
   const containerClasses = classNames({
     [containerClassName]: true,
     [css.visible]: containerVisible,
-  });
+  })
 
   return (
     <div className={containerClasses}>
@@ -30,7 +30,7 @@ const MobileContainerWrapper: React.FC<IProps> = (props: any) => {
         </button>
         {children}
     </div>
-  );
+  )
 }
 
-export default MobileContainerWrapper;
+export default MobileContainerWrapper

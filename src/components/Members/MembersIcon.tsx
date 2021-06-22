@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-const MembersIcon = () => (
+const MembersIcon: React.FC = () => (
     <svg 
       version="1.1" 
       xmlns="http://www.w3.org/2000/svg" 
@@ -46,4 +46,4 @@ const MembersIcon = () => (
     </svg>
 )
 
-export default MembersIcon;
+export default MembersIcon

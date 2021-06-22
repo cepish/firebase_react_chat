@@ -1,20 +1,18 @@
-import React from 'react';
-import css from './Members.module.scss';
-import classNames from 'classnames';
-import { useCollection } from '../../utils/hooks';
-import { IUser, IOnlineUser } from '../../types/firebase';
-import { MobileContainerWrapper } from '../../components';
-import MembersIcon from './MembersIcon';
+import React from 'react'
+import css from './Members.module.scss'
+import classNames from 'classnames'
+import { useCollection } from '../../utils/hooks'
+import { IUser } from '../../types/firebase'
+import { MobileContainerWrapper } from '../../components'
+import MembersIcon from './MembersIcon'
 
 interface IProps {
   channelId: string,
 }
 
-type IMemeber = IUser & { channels: IOnlineUser }
-
 const Members: React.FC<IProps> = props=> {
-  const { channelId } = props;
-  const [members] = useCollection<IUser>('users');
+  const { channelId } = props
+  const [members] = useCollection<IUser>('users')
 
   return (
     <MobileContainerWrapper 
@@ -42,7 +40,7 @@ const Members: React.FC<IProps> = props=> {
         })}
       </div>
     </MobileContainerWrapper>
-  );
+  )
 }
 
-export default Members;
+export default Members

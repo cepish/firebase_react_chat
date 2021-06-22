@@ -1,14 +1,14 @@
-import React from 'react';
-import css from './Login.module.scss';
-import firebase from 'firebase/app';
+import React from 'react'
+import css from './Login.module.scss'
+import firebase from 'firebase/app'
 
 interface ILogin {
-    handleSignIn: Function,
+    handleSignIn: () => void,
     loginError: firebase.auth.Error | null,
 }
 
 const Login: React.FC<ILogin> = props => {
-    const { handleSignIn, loginError } = props;
+    const { handleSignIn, loginError } = props
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -34,7 +34,7 @@ const Login: React.FC<ILogin> = props => {
                 </div>
             </div>
         </div>   
-  );
+  )
 }
 
-export default Login;
+export default Login

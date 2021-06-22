@@ -1,7 +1,7 @@
-import React from 'react';
-import css from './User.module.scss';
-import { IUser } from '../../types/firebase';
-import { firebaseInstance } from  '../../App';
+import React from 'react'
+import css from './User.module.scss'
+import { IUser } from '../../types/firebase'
+import { firebaseInstance } from  '../../App'
 
 interface Props {
   user: IUser | null,
@@ -28,7 +28,7 @@ const User: React.FC<Props> = props => {
         </div>
       </div>
     </div>
-  ) : null;
+  ) : null
 }
 
-export default User;
+export default User

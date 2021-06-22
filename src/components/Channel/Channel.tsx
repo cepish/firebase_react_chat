@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react'
 import { 
   Members, 
   Messages, 
   SendMessageForm, 
-} from '../../components';
-import css from './Channel.module.scss';
-import config from '../../config';
-import { db } from '../../App';
-import { IUser, IDoc } from '../../types/firebase';
-import { useDoc, useOnline } from '../../utils/hooks';
+} from '../../components'
+import css from './Channel.module.scss'
+import config from '../../config'
+import { IUser } from '../../types/firebase'
+import { useDoc, useOnline } from '../../utils/hooks'
 
 interface Props {
   user: IUser | null,
@@ -16,14 +15,14 @@ interface Props {
   channelId?: string, // comes from path prop, so no need to pass it explicitly
 }
 
-const { defaultChannel } = config;
+const { defaultChannel } = config
 
 const Channel: React.FC<Props> = props => {
-  const { user, channelId = defaultChannel } = props;
-  const doc = useDoc(`channels/${channelId}`);
-  const topic = doc 
+  const { user, channelId = defaultChannel } = props
+  const doc = useDoc(`channels/${channelId}`)
+  const topic = (doc && doc.data)
     ? doc.data.topic 
-    : 'Loading awesome stuff...';
+    : 'Loading awesome stuff...'
 
   useOnline(user, channelId)
 
@@ -41,7 +40,7 @@ const Channel: React.FC<Props> = props => {
         </div>
         <Members channelId={channelId}/>
     </div>
-  );
+  )
 }
 
-export default Channel;
+export default Channel

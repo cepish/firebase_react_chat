@@ -1,16 +1,16 @@
-import React, { useState, useEffect} from 'react';
-import { db } from '../App';
-import { IUser, IDoc } from '../types/firebase';
-import firebase from 'firebase/app';
-import { firebaseInstance } from '../App';
-import { setUpPresence } from './rtdb';
+import React, { useState, useEffect} from 'react'
+import { db } from '../App'
+import { IUser, IDoc } from '../types/firebase'
+import firebase from 'firebase/app'
+import { firebaseInstance } from '../App'
+import { setUpPresence } from './rtdb'
 
 /** useAuth types  **/
 type ILoginErroFunc = React.Dispatch<React.SetStateAction<firebase.auth.Error | null>>;
 
 export function useAuth(setLoginError: ILoginErroFunc): IUser | null {
-  const [user, setUser] = useState<IUser | null>(null);
-
+  const [user, setUser] = useState<IUser | null>(null)
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     /* login success callback */
     const loginSucceeded = (firebaseUser: firebase.User | null) => {
@@ -27,7 +27,7 @@ export function useAuth(setLoginError: ILoginErroFunc): IUser | null {
           .doc(user.uid)
           .set(user, { merge: true })
 
-        setUpPresence(user as IUser);
+        setUpPresence(user as IUser)
 
         setUser(user as IUser)
       }
@@ -40,9 +40,9 @@ export function useAuth(setLoginError: ILoginErroFunc): IUser | null {
 
     return firebaseInstance.auth().onAuthStateChanged(loginSucceeded, loginFailed)
   }, [])
-
+  /* eslint-enable react-hooks/exhaustive-deps */  
   return user
-};
+}
 
 /** useCollection types  **/
 type IUseCollection<ICollection> = [
@@ -57,16 +57,16 @@ export function useCollection<ICollection>
     useEffect(() => {
       const request = order 
         ? db.collection(path).orderBy(order, 'asc') 
-        : db.collection(path);
+        : db.collection(path)
 
       return request.onSnapshot(snapshot => {
           const items: ICollection[] = []
-
+          /* eslint-disable @typescript-eslint/no-explicit-any */
           snapshot.forEach((doc: { [key: string]: any }) => {
             const data: { [key: string] : any } = {}
-
+            /* eslint-enable @typescript-eslint/no-explicit-any */
             if(signature && typeof signature === 'object') {
-              for(let key in signature) {
+              for(const key in signature) {
                 data[key] = signature[key] === 'func' 
                   ? doc[key]() 
                   : doc[key] 
@@ -80,13 +80,13 @@ export function useCollection<ICollection>
 
           setCollectionItems(items)
         })
-      }, [path, order])
+      }, [path, order, signature])
 
     return [collectionItems, setCollectionItems]
-};
+}
 
 export function useDoc(path: string): IDoc | null {
-  const [doc, setDoc] = useState<IDoc | null>(null);
+  const [doc, setDoc] = useState<IDoc | null>(null)
 
   useEffect(() => {
     return db.doc(path)
@@ -101,7 +101,7 @@ export function useDoc(path: string): IDoc | null {
   }, [path])
 
   return doc
-};
+}
 
 export function useOnline(user: IUser | null, channelId: string): void {
   useEffect(() => {
