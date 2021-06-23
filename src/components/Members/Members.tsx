@@ -7,15 +7,15 @@ import { MobileContainerWrapper } from '../../components'
 import MembersIcon from './MembersIcon'
 
 interface IProps {
-  channelId: string,
+  channelId: string
 }
 
-const Members: React.FC<IProps> = props=> {
+const Members: React.FC<IProps> = props => {
   const { channelId } = props
   const [members] = useCollection<IUser>('users')
 
   return (
-    <MobileContainerWrapper 
+    <MobileContainerWrapper
       containerClassName={css.container}
       buttonClassName={css.toggleButton}
       icon={<MembersIcon />}
@@ -23,18 +23,20 @@ const Members: React.FC<IProps> = props=> {
       <div className={css.members}>
         {members.map((member: IUser) => {
           const isOnline =
-            member.channels && 
-            member.channels[channelId] && 
+            member.channels &&
+            member.channels[channelId] &&
             member.channels[channelId].isOnline
 
           return (
             <div className={css.member} key={member.uid}>
-              <div className={classNames({
-                [css.memberStatus]: true, 
-                [css.online]: isOnline,
-                [css.offline]: !isOnline,
-              })} />
-                {member.displayName}
+              <div
+                className={classNames({
+                  [css.memberStatus]: true,
+                  [css.online]: isOnline,
+                  [css.offline]: !isOnline,
+                })}
+              />
+              {member.displayName}
             </div>
           )
         })}

@@ -28,8 +28,7 @@ const App: React.FC = () => {
 
     try {
       await firebaseInstance.auth().signInWithPopup(provider)
-    }
-    catch(error) {
+    } catch (error) {
       setLoginError(error)
     }
   }
@@ -38,7 +37,7 @@ const App: React.FC = () => {
 
   const app = (
     <React.Fragment>
-      <Nav user={user}/>
+      <Nav user={user} />
       <Router>
         <Channel path='/channel/:channelId' user={user} />
         <Redirect noThrow={true} from='/' to={`/channel/${defaultChannel}`} />
@@ -48,10 +47,7 @@ const App: React.FC = () => {
 
   return (
     <div className={css.app}>
-      {user 
-        ? app 
-        : <Login loginError={loginError} handleSignIn={handleSignIn} />
-      }
+      {user ? app : <Login loginError={loginError} handleSignIn={handleSignIn} />}
     </div>
   )
 }

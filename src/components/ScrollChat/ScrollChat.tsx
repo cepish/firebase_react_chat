@@ -1,37 +1,35 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 interface IProps {
-    className: string,
+  className: string
 }
 
 const ScrollChat: React.FC<IProps> = props => {
-    const ref = useRef<HTMLDivElement | null>(null)
-    const [shouldScroll, indicateScroll] = useState<boolean>(true)
+  const ref = useRef<HTMLDivElement | null>(null)
+  const [shouldScroll, indicateScroll] = useState<boolean>(true)
 
-    const { current } = ref || { current: null }
+  const { current } = ref || { current: null }
 
-    useEffect(() => {
-        if(shouldScroll && current) {
-          const { children } = current
-          const lastChild = children[children.length - 1]
-  
-          setTimeout(() => {
-            lastChild.scrollIntoView({ behavior: 'smooth' })
-          }, 250)
-        }
-    })
+  useEffect(() => {
+    if (shouldScroll && current) {
+      const { children } = current
+      const lastChild = children[children.length - 1]
 
-    const handleScroll = () => {
-        if(current) {
-            const { scrollHeight, scrollTop, clientHeight } = current
-            const atBottom = scrollHeight === clientHeight + scrollTop
-            indicateScroll(atBottom)
-        }
+      setTimeout(() => {
+        lastChild.scrollIntoView({ behavior: 'smooth' })
+      }, 250)
     }
+  })
 
-    return (
-        <div {...props} ref={ref} onScroll={handleScroll}/>
-    )
+  const handleScroll = () => {
+    if (current) {
+      const { scrollHeight, scrollTop, clientHeight } = current
+      const atBottom = scrollHeight === clientHeight + scrollTop
+      indicateScroll(atBottom)
+    }
+  }
+
+  return <div {...props} ref={ref} onScroll={handleScroll} />
 }
 
 export default ScrollChat
