@@ -14,7 +14,7 @@ if (!firebase.apps.length) {
 } else {
   firebase.app()
 }
-
+const test = 1
 export const firebaseInstance = firebase
 export const db = firebaseInstance.firestore()
 export const rtdb = firebaseInstance.database()
