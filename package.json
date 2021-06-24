@@ -19,11 +19,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ignore-path .gitignore .",
+    "lint": "eslint --ignore-path .gitignore --ext .ts,.tsx .",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(tsx|ts|json)\"",
     "format": "yarn prettier -- --write",
     "check-format": "yarn prettier -- --list-different",
-    "validate": "yarn check-format && yarn lint && yarn build"
+    "validate": "yarn format && yarn lint && yarn build"
   },
   "eslintConfig": {
     "extends": [
@@ -62,6 +62,7 @@
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^6.0.0",
     "prettier": "^2.3.1"
   }
 }
