@@ -25,6 +25,15 @@
     "check-format": "yarn prettier -- --list-different",
     "validate": "yarn format && yarn lint && yarn build"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(ts|tsx)": ["eslint"],
+    "**/*.+(tsx|ts)": ["prettier --write", "git add"]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
