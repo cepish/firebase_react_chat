@@ -23,7 +23,18 @@
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(tsx|ts|json)\"",
     "format": "yarn prettier -- --write",
     "check-format": "yarn prettier -- --list-different",
-    "validate": "yarn format && yarn lint && yarn build"
+    "validate": "yarn format && yarn lint && yarn build",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.+(ts|tsx)": [
+      "eslint"
+    ],
+    "**/*.+(tsx|ts)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -63,6 +74,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "prettier": "^2.3.1"
   }
 }
