@@ -3,7 +3,8 @@ import { Members, Messages, SendMessageForm } from '../../components'
 import css from './Channel.module.scss'
 import config from '../../config'
 import { IUser } from '../../types/firebase'
-import { useDoc, useOnline } from '../../utils/hooks'
+import { useDoc } from '../../hooks/useDoc'
+import { useOnline } from '../../hooks/useOnline'
 
 interface Props {
   user: IUser | null
