@@ -1,7 +1,7 @@
 import React from 'react'
 import css from './Messages.module.scss'
 import { IChannelMessage } from '../../types/firebase'
-import { useCollection } from '../../utils/hooks'
+import { useCollection } from '../../hooks/useCollection'
 import { MessageItem, ScrollChat } from '../../components'
 
 interface IProps {

@@ -1,7 +1,7 @@
 import React from 'react'
 import css from './Members.module.scss'
 import classNames from 'classnames'
-import { useCollection } from '../../utils/hooks'
+import { useCollection } from '../../hooks/useCollection'
 import { IUser } from '../../types/firebase'
 import { MobileContainerWrapper } from '../../components'
 import MembersIcon from './MembersIcon'
