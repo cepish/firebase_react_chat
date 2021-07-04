@@ -5,7 +5,7 @@ import 'firebase/firestore'
 import 'firebase/database'
 import { Nav, Channel, Login } from './components'
 import { Router, Redirect } from '@reach/router'
-import { useAuth } from './utils/hooks'
+import { useAuth } from './hooks/useAuth'
 import config from './config'
 import css from './App.module.scss'
 
@@ -14,7 +14,7 @@ if (!firebase.apps.length) {
 } else {
   firebase.app()
 }
-const test = 1
+
 export const firebaseInstance = firebase
 export const db = firebaseInstance.firestore()
 export const rtdb = firebaseInstance.database()

@@ -18,6 +18,8 @@
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:cover": "react-scripts test --coverage --watchAll",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject",
     "lint": "eslint --ignore-path .gitignore --ext .ts,.tsx .",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(tsx|ts|json)\"",
@@ -29,12 +31,35 @@
   },
   "lint-staged": {
     "*.+(ts|tsx)": [
-      "eslint"
+      "eslint --fix --max-warnings 0"
     ],
     "**/*.+(tsx|ts)": [
       "prettier --write",
       "git add"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/**/src/**/*.{ts,tsx}",
+      "!<rootDir>/**/**/types/*.{ts,tsx}",
+      "!<rootDir>/**/**/components/index.tsx",
+      "!<rootDir>/**/src/config.ts",
+      "!<rootDir>/**/src/index.tsx"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 6,
+        "functions": 6,
+        "lines": 6,
+        "statements": 6
+      },
+      "./src/hooks/useAuth.ts": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
   },
   "eslintConfig": {
     "extends": [

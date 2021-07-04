@@ -3,7 +3,7 @@ import css from './Nav.module.scss'
 import classNames from 'classnames'
 import { User, MobileContainerWrapper } from '../../components'
 import { IDoc, IUser } from '../../types/firebase'
-import { useCollection } from '../../utils/hooks'
+import { useCollection } from '../../hooks/useCollection'
 import { Link } from '@reach/router'
 import NavIcon from './NavIcon'
 
