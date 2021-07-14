@@ -39,6 +39,7 @@
     ]
   },
   "jest": {
+    "resetMocks": false,
     "collectCoverageFrom": [
       "<rootDir>/**/src/**/*.{ts,tsx}",
       "!<rootDir>/**/**/types/*.{ts,tsx}",

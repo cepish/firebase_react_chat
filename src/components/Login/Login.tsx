@@ -25,10 +25,6 @@ const Login: React.FC<ILogin> = props => {
           </h4>
           <form id='signInForm' onSubmit={handleSubmit}>
             <div className={css.formContainer}>
-              {/* <div className={css.inputWrapper}>
-                                <label className={css.label} htmlFor="email">Your Login (email/username)</label>
-                                <input type="text" name="email" id="email"/>
-                            </div> */}
               <input
                 type='submit'
                 className='btn btn-submit'
