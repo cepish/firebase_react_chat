@@ -1,17 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import css from './Login.module.scss'
 import firebase from 'firebase/app'
+import 'firebase/auth'
+import { ISetUserCallback } from '../../types/app'
+import { useAuth } from '../../hooks/useAuth'
+import { firebaseInstance } from '../../App'
 
 interface ILogin {
-  handleSignIn: () => void
-  loginError: firebase.auth.Error | null
+  setUser: ISetUserCallback
 }
 
 const Login: React.FC<ILogin> = props => {
-  const { handleSignIn, loginError } = props
+  const { setUser } = props
+  const [loginError, setLoginError] = useState<firebase.auth.Error | null>(null)
+  const user = useAuth(setLoginError)
+
+  useEffect(() => {
+    setUser(user)
+  }, [user, setUser])
+
+  const handleSignIn = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider()
+    /* eslint-disable */
+
+    try {
+      await firebaseInstance.auth().signInWithPopup(provider)
+    } catch (error) {
+      setLoginError(error.message)
+    }
+  }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setLoginError(null)
     handleSignIn()
   }
 

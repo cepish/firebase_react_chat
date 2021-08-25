@@ -31,7 +31,7 @@ const Channel: React.FC<Props> = props => {
           <div>#{channelId}</div>
         </div>
         <Messages channelId={channelId} />
-        <SendMessageForm user={user} channelId={channelId} />
+        <SendMessageForm user={user} channelId={channelId} key={channelId} />
       </div>
       <Members channelId={channelId} />
     </div>

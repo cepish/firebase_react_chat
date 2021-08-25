@@ -17,13 +17,18 @@ const MessageItem: React.FC<IProp> = props => {
   useEffect(() => {
     const request = message.user.get()
 
-    return request.then((doc: IDoc['data']) => {
-      if (doc.exists) {
-        setAuthor(doc.data() as IUser)
-      } else {
+    return request
+      .then((doc: IDoc['data']) => {
+        if (doc.exists) {
+          setAuthor(doc.data() as IUser)
+        } else {
+          setError(true)
+        }
+      })
+      .catch((error: Error) => {
+        console.error(error)
         setError(true)
-      }
-    })
+      })
   }, [message])
 
   const getMessageTime = (date: string): string =>
@@ -43,6 +48,7 @@ const MessageItem: React.FC<IProp> = props => {
     <div className={classNames(css.message, css.withAvatar)}>
       <div
         className={css.avatar}
+        role='presentation'
         style={{ 'backgroundImage': `url(${author.photoURL})` }}
       />
       <div className={css.author}>
@@ -72,7 +78,9 @@ const MessageItem: React.FC<IProp> = props => {
   const dateItem = showDay ? (
     <div className={css.day}>
       <div className={css.dayLine} />
-      <div className={css.dayText}>{getMessagesDate(message.createdAtStr)}</div>
+      <div className={css.dayText} role='timer'>
+        {getMessagesDate(message.createdAtStr)}
+      </div>
       <div className={css.dayLine} />
     </div>
   ) : null

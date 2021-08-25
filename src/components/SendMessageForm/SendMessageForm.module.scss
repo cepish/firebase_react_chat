@@ -1,8 +1,24 @@
 @import '../../styles/index.scss';
 
 .inputBox {
-    padding: 0px 20px 20px 20px;
+  padding: 0px 20px 20px 20px;
+  position: relative;
 }
 .field {
-    @include input-field;
+  @include input-field;
+  padding-right: 100px;
+  resize: none;
+  max-height: 41px;
+}
+
+button[type='submit'] {
+  position: absolute;
+  right: 31px;
+  top: 21px;
+  transform: translateY(-50%);
+}
+.messageError {
+  color: darkred;
+  font-size: 11px;
+  margin: 0;
 }
